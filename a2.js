@@ -43,6 +43,7 @@ collegeData.initialize()
         console.error('Error retrieving TAs:', error);
       });
   })
-  .catch((error) => {
+    // Catch any initialization errors
+  .catch((error) => { 
     console.error('Initialization error:', error);
   });
