@@ -7,40 +7,42 @@
  *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
  * 
  *  Name: Subash Dhital Student ID: sdhital1 (123345233) Date: January 30, 2024 
- * github link: https://github.com/subashdhital/WEB700_assignment2
+ *  GitHub Link: https://github.com/subashdhital/WEB700_assignment2
  ***********************************************************************/
-// This is the main file for the assignment 2. It will test the collegeData module by calling its methods to get all students, courses and TAs.
-const collegeData = require('./modules/collegeData'); //importing the collegeData module
+
+// Importing the collegeData module
+const collegeData = require('./modules/collegeData');
 
 // Initializing the collegeData module
 collegeData.initialize()
-  .then((message) => {
-    //console.log(message);
-
-    // test to get all students
+  .then(() => {
+    // Test to get all students
     collegeData.getAllStudents()
       .then((students) => {
         console.log('Successfully retrieved ' + students.length + ' students');
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error('Error retrieving students:', error);
       });
 
-    // test to get courses
+    // to get courses
     collegeData.getCourses()
       .then((courses) => {
-        console.log('Successfully retrieved ' + courses.length+ ' courses');
-      }).catch((error) => {
+        console.log('Successfully retrieved ' + courses.length + ' courses');
+      })
+      .catch((error) => {
         console.error('Error retrieving courses:', error);
       });
 
-    // test to get tas
+    // to get TAs
     collegeData.getTAs()
       .then((tas) => {
         console.log('Successfully retrieved ' + tas.length + ' TAs');
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error('Error retrieving TAs:', error);
       });
   })
-.catch((error) => {
-    console.error('initialization error:', error);
+  .catch((error) => {
+    console.error('Initialization error:', error);
   });

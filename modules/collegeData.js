@@ -1,63 +1,73 @@
-//STEP 3: writing the collegeData module
+// Step 3: Writing the "collegeData" Module
 
-const courses = require("../data/courses.json"); //importing the courses.json file
-const students = require("../data/students.json");//importing the students.json file
+const courses = require("../data/courses.json");    // Importing courses.json file
 
-//class creation with constructor
-class Data{
-    constructor(students, courses){
-        this.students = students;
-        this.courses = courses;
-    }
+const students = require("../data/students.json");  // Importing students.json file
+
+// Class creation with constructor
+class Data {
+  constructor(students, courses) {
+    this.students = students;
+    this.courses = courses;
+  }
 }
 
 let dataCollection = null;
 
-
-function initialize(){
-    dataCollection = new Data(students, courses);
-    return Promise.resolve();
+// Function to initialize data by creating a Data instance
+function initialize() {
+  // Create a Data class instance with students and courses data
+  dataCollection = new Data(students, courses);
+  // Resolve the promise to indicate successful initialization
+  return Promise.resolve();
 }
 
-//accessing the data using the datacollection objects
-function getAllStudents(){
-    return new Promise((resolve, reject)=>{ //using the resolve and reject method of promise
-        if (dataCollection.students === 0){
-            reject("no results returned");
-        }
-        else{
-            resolve(dataCollection.students);
-        }
-    });
+// Function to get all students
+function getAllStudents() {
+  return new Promise((resolve, reject) => {
+    // Check if students data exists
+    if (dataCollection.students.length === 0) {
+      reject("No results returned");
+    } else {
+      resolve(dataCollection.students);
+    }
+  });
 }
 
+// Function to get Teaching Assistants (TAs)
 function getTAs() {
-    return new Promise((resolve, reject) => {
-      const tas = dataCollection.students.filter(student => student.TA);
-      if (tas.length === 0) {
-        reject("no results returned.");
-      } 
-      else {
-        resolve(tas);
-      }
-    });
-  }
+  return new Promise((resolve, reject) => {
+    // Filter students who are TAs
+    const tas = dataCollection.students.filter(student => student.TA);
+    // Check if any TAs found
+    if (tas.length === 0) {
+      // If no TAs, reject with a meaningful message
+      reject("No results returned.");
+    } else {
+      // If TAs exist, resolve with the TAs data
+      resolve(tas);
+    }
+  });
+}
 
-  function getCourses() {
-    return new Promise((resolve, reject) => {
-      if (dataCollection.courses === 0) {
-        reject("no results returned.");
-      } 
-      else {
-        resolve(dataCollection.courses);
-      }
-    });
-  }
+// Function to get all courses
+function getCourses() {
+  return new Promise((resolve, reject) => {
+    // Check if courses data exists
+    if (dataCollection.courses.length === 0) {
+      // If no courses, reject with a meaningful message
+      reject("No results returned.");
+    } else {
+      // If courses exist, resolve with the courses data
+      resolve(dataCollection.courses);
+    }
+  });
+}
 
-  //exporting the module
-  module.exports = {
-    initialize,
-    getAllStudents,
-    getTAs,
-    getCourses
-  };
+// Exporting the module functions
+module.exports = {
+  initialize,
+  getAllStudents,
+  getTAs,
+  getCourses
+};
