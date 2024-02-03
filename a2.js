@@ -16,7 +16,7 @@ const collegeData = require('./modules/collegeData');
 // Initializing the collegeData module
 collegeData.initialize()
   .then(() => {
-    // Test to get all students
+    // to get all students
     collegeData.getAllStudents()
       .then((students) => {
         console.log('Successfully retrieved ' + students.length + ' students');
