@@ -6,7 +6,7 @@
  * 
  *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
  * 
- *  Name: Subash Dhital Student ID: sdhital1 (123345233) Date: January 30, 2021 
+ *  Name: Subash Dhital Student ID: sdhital1 (123345233) Date: January 30, 2024 
  * github link: https://github.com/subashdhital/WEB700_assignment2
  ***********************************************************************/
 // This is the main file for the assignment 2. It will test the collegeData module by calling its methods to get all students, courses and TAs.
